@@ -28,13 +28,10 @@ class JsonCustomEncoder(json.JSONEncoder):
         else:
             return json.JSONEncoder.default(self, field)
 
-
 class Response(object):
     def __init__(self):
-        self.status = True
+        self.status =True
         self.data = "asdf"
-
-
 data = {
     'k1': 123,
     'k2': datetime.now(),

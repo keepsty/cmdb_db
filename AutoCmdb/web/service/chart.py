@@ -14,10 +14,10 @@ class Business(object):
                 SELECT
                     id,
                     name,
-                    (select count(id) from repository_asset as A where B.id=A.business_unit_id and A.device_type_id=1) as server_count,
-                    (select count(id) from repository_asset as A where B.id=A.business_unit_id and A.device_type_id=2) as switch_count,
-                    (select count(id) from repository_asset as A where B.id=A.business_unit_id and A.device_type_id=3) as firewall_count
-                from repository_businessunit as B"""
+                    (select count(id) from asset as A where B.id=A.business_unit_id and A.device_type_id=1) as server_count,
+                    (select count(id) from asset as A where B.id=A.business_unit_id and A.device_type_id=2) as switch_count,
+                    (select count(id) from asset as A where B.id=A.business_unit_id and A.device_type_id=3) as firewall_count
+                from businessunit as B"""
             result = models.BusinessUnit.objects.raw(sql)
             ret = {
                 'categories': [],

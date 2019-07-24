@@ -112,11 +112,10 @@ class Asset(BaseServiceList):
         ]
         # 额外搜索条件
         extra_select = {
-            'server_title': 'select hostname from repository_server where repository_server.asset_id=repository_asset.id and repository_asset.device_type_id=1',
-            'network_title': 'select management_ip from repository_networkdevice where repository_networkdevice.asset_id=repository_asset.id and repository_asset.device_type_id=2',
+            'server_title': 'select hostname from server where server.asset_id=asset.id and asset.device_type_id=1',
+            'network_title': 'select management_ip from networkdevice where networkdevice.asset_id=asset.id and asset.device_type_id=2',
         }
         super(Asset, self).__init__(condition_config, table_config, extra_select)
-
 
     @property
     def device_status_list(self):

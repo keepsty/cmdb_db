@@ -43,7 +43,6 @@ class AutoBase(object):
                 url=self.asset_api,
                 headers=headers
             )
-            print(response)
         except Exception as e:
             response = e
         return response.json()
@@ -87,7 +86,6 @@ class AutoBase(object):
         if not status:
             Logger().log(str(response), False)
             return
-        # print(response)
         ret = json.loads(response.text)
         if ret['code'] == 1000:
             Logger().log(ret['message'], True)
@@ -112,7 +110,6 @@ class AutoAgent(AutoBase):
         if not data:
             return None
         cert = data.strip()
-        print(cert)
         return cert
 
     def write_local_cert(self, cert):
@@ -150,9 +147,7 @@ class AutoAgent(AutoBase):
         else:
             self.write_local_cert(server_info.data['hostname'])
         server_json = Json.dumps(server_info.data)
-        print(server_json)
         self.post_asset(server_json, self.callback)
-        # self.post_asset(server_json)
 
 
 class AutoSSH(AutoBase):
@@ -162,7 +157,6 @@ class AutoSSH(AutoBase):
         :return:
         """
         task = self.get_asset()
-        print(task)
         if not task['status']:
             Logger().log(task['message'], False)
 
@@ -213,3 +207,4 @@ class AutoSalt(AutoBase):
         server_json = Json.dumps(server_info.data)
         # 发送到API
         self.post_asset(server_json, self.callback)
+

@@ -31,7 +31,7 @@ img {
     height: 32px;
     width: 32px;
     margin: 0 0 0 -16px;
-    background: url(/static/imgs/loading.gif);
+    background: url(/web/static/imgs/loading.gif);
 }
 
 .modal-delete {
