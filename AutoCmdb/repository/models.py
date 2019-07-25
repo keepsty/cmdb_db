@@ -385,3 +385,11 @@ class RestoreDB(models.Model):
     class Meta:
         unique_together = ('master_ip',)
         db_table = 'RestoreDB'
+
+
+class DBChangeLog(models.Model):
+    db_id = models.IntegerField()
+    username = models.CharField(max_length=32, default='')
+    option = models.CharField(max_length=32, default='')
+    create_time = models.DateTimeField(auto_now_add=True)
+    status = models.CharField(max_length=16, default='')

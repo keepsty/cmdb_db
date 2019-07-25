@@ -17,28 +17,18 @@
             <!-- Nav tabs -->
             <ul class="nav nav-tabs" role="tablist">
                 <li role="presentation" class="active"><a class="no-radius" href="#basic" aria-controls="basic" role="tab"
-                                                          data-toggle="tab">基本信息</a></li>
-                <li role="presentation"><a class="no-radius" href="#hardware" aria-controls="hardware" role="tab"
-                                           data-toggle="tab">硬件信息</a></li>
+                                                          data-toggle="tab">DB信息</a></li>
                 <li role="presentation"><a class="no-radius" href="#log" aria-controls="log" role="tab"
                                            data-toggle="tab">变更记录</a></li>
-
             </ul>
 
             <!-- Tab panes -->
             <div class="tab-content">
                 <div role="tabpanel" class="tab-pane active" id="basic">
-                    {% include 'include/asset_basic.html' %}
-                </div>
-                <div role="tabpanel" class="tab-pane" id="hardware">
-                    {% if device_type_id == '1' %}
-                        {% include 'include/asset_server_hardware.html' %}
-                    {% else %}
-                        {% include 'include/asset_network_hardware.html' %}
-                    {% endif %}
+                    {% include 'include/database_basic.html' %}
                 </div>
                 <div role="tabpanel" class="tab-pane" id="log">
-                    {% include 'include/asset_log.html' %}
+                    {% include 'include/DB_change_log.html' %}
                 </div>
 
             </div>
