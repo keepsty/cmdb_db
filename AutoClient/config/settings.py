@@ -35,10 +35,35 @@ PLUGINS_DICT = {
     'main_board': 'src.plugins.main_board.MainBoardPlugin',
     'memory': 'src.plugins.memory.MemoryPlugin',
     'nic': 'src.plugins.nic.NicPlugin',
+    'database': 'src.plugins.database.DatabasePlugin',
 }
 
 # 资产信息API
 ASSET_API = "http://127.0.0.1:8000/api/asset"
+# 数据库API
+DATABASE_API = "http://127.0.0.1:8000/api/database"
+
+SERVER_DATABASE_CONF = {
+    'user': 'yang',
+    'host': '172.16.111.131',
+    'port': '3306',
+    'password': '111111',
+    'db': 'cmdb',
+    'sql': 'select ip,port,db_name from cmdb.MysqlInfo'
+}
+
+CLIENT_DATABASE_CONF = {
+    'user': 'yang',
+    'host': '172.16.111.131',
+    'port': '3306',
+    'password': '111111',
+    'sql_list': {'variables': 'show global variables;',
+                 'status': 'show global status;',
+                 'processlist': 'select user,host,db,time,info from information_schema.processlist where info is not null;',
+                 'engine': 'show engine innodb status;', },
+
+}
+
 """
 POST时，返回值：{'code': xx, 'message': 'xx'}
  code:

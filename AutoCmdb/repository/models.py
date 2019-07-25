@@ -291,7 +291,7 @@ class MysqlInfo(models.Model):
     service_name = models.CharField(max_length=10)  # 业务名称
     port = models.IntegerField()
     description = models.CharField(max_length=50, null=True)
-    root_pass = models.CharField(max_length=30)  # root 密码
+    root_pass = models.CharField(max_length=30)  # 密码
     backup_ip = models.GenericIPAddressField(null=True)  # 备份机器
     archive_ip = models.GenericIPAddressField(null=True)  # 归档机器
     version = models.CharField(max_length=15, default='5.7.23')  # 版本

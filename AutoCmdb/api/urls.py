@@ -5,4 +5,5 @@ from api import views
 
 urlpatterns = [
     url(r'^asset$', views.AssetView.as_view()),
+    url(r'^databases$', views.DatabaseView.as_view()),
 ]

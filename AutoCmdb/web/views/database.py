@@ -36,6 +36,6 @@ class DatabaseDetailView(View):
         return render(request, 'database_detail.html', {'response': response, 'db_name': db_name})
 
 
-class AddAssetView(View):
+class AddDatabaseView(View):
     def get(self, request, *args, **kwargs):
-        return render(request, 'add_asset.html')
+        return render(request, 'add_database.html')
