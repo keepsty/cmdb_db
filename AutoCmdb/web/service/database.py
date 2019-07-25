@@ -66,10 +66,10 @@ class Database(BaseServiceList):
                 'title': "选项",
                 'display': 1,
                 'text': {
-                    'content': "<a href='/database-{db_name}-{nid}.html'>查看详细</a> | <a href='/edit-database-{db_name}-{nid}.html'>编辑</a>",
+                    'content': "<a href='/database-{db_name}-{nid}.html'>查看详细</a> | <a href='/database-{db_name}-{nid}.html'>编辑</a> | <a href='/database-{db_name}-{nid}.html'>主从切换</a>",
                     'kwargs': {'db_name': '@db_name', 'nid': '@id'}},
                 'attr': {}
-            },
+            }
 
         ]
         # 额外搜索条件
@@ -131,7 +131,7 @@ class Database(BaseServiceList):
                 nid = row_dict.pop('nid')
                 num = row_dict.pop('num')
                 try:
-                    models.MysqlInitInfo.objects.filter(id=nid).update(**row_dict)
+                    models.MysqlInfo.objects.filter(id=nid).update(**row_dict)
                 except Exception as e:
                     response.error.append({'num': num, 'message': str(e)})
                     response.status = False
@@ -140,6 +140,17 @@ class Database(BaseServiceList):
                 response.message = '共%s条,失败%s条' % (len(update_list), error_count,)
             else:
                 response.message = '更新成功'
+        except Exception as e:
+            response.status = False
+            response.message = str(e)
+        return response
+
+    @staticmethod
+    def database_detail(db_name, db_id):
+        response = BaseResponse()
+        try:
+            response.data = models.MysqlInfo.objects.filter(id=db_id, name=db_name).first()
+
         except Exception as e:
             response.status = False
             response.message = str(e)

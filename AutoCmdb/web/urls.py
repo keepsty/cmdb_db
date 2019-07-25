@@ -15,6 +15,7 @@ urlpatterns = [
     re_path(r'^username_exists_check/', account.username_exists_check),
     url(r'^index.html$', home.IndexView.as_view()),
     url(r'^cmdb.html$', home.CmdbView.as_view()),
+
     url(r'^asset.html$', asset.AssetListView.as_view()),
     url(r'^assets.html$', asset.AssetJsonView.as_view()),
     url(r'^asset-(?P<device_type_id>\d+)-(?P<asset_nid>\d+).html$', asset.AssetDetailView.as_view()),
@@ -25,7 +26,8 @@ urlpatterns = [
 
     url(r'^databases.html$', database.DatabaseListView.as_view()),
     url(r'^database.html$', database.DatabaseJsonView.as_view()),
-    url(r'^database-(?P<device_type_id>\d+)-(?P<asset_nid>\d+).html$', asset.AssetDetailView.as_view()),
+    url(r'^database-(?P<db_name>\w+)-(?P<db_id>\w+).html$', database.DatabaseDetailView.as_view()),
+    url(r'^add-asset.html$', asset.AddAssetView.as_view()),
 
     url(r'^chart-(?P<chart_type>\w+).html$', home.ChartView.as_view()),
 ]

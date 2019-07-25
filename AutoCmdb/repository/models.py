@@ -268,7 +268,7 @@ class ErrorLog(models.Model):
 
 
 class MysqlInitInfo(models.Model):
-    # 显示信息 server里都有
+    # 显示信息 server里都有 初始化表
     server_ip = models.GenericIPAddressField()
     user = models.CharField(max_length=30)
     status = models.CharField(max_length=10)  # 主从信息
@@ -283,7 +283,7 @@ class MysqlInitInfo(models.Model):
 
 
 class MysqlInfo(models.Model):
-    # 授权库信息
+    # 数据库信息
     db_name = models.CharField(max_length=50)
     role = models.CharField(max_length=15)  # master or slave
     hostname = models.CharField(max_length=50)

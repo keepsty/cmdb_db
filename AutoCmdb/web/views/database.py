@@ -28,3 +28,14 @@ class DatabaseJsonView(View):
     def put(self, request):
         response = database.Database.put_database(request)
         return JsonResponse(response.__dict__)
+
+
+class DatabaseDetailView(View):
+    def get(self, request, db_name, db_id):
+        response = database.Database.database_detail(db_name, db_id)
+        return render(request, 'database_detail.html', {'response': response, 'db_name': db_name})
+
+
+class AddAssetView(View):
+    def get(self, request, *args, **kwargs):
+        return render(request, 'add_asset.html')
