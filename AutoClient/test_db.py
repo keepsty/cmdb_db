@@ -111,4 +111,4 @@ def linux():
 obj_1 = linux()
 for subject in settings.CLIENT_DATABASE_CONF['sql_list']:
     for i in obj_1[subject]:
-        print(i['Variable_name'], i['Value'])
+        print(i)

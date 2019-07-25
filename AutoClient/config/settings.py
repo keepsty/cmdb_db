@@ -18,7 +18,7 @@ RUN_LOG_FILE = os.path.join(BASEDIR, "log", 'run.log')
 CERT_FILE_PATH = os.path.join(BASEDIR, 'config', 'cert')
 
 # 是否测试模式，测试模时候数据从files目录下读取
-TEST_MODE = True
+TEST_MODE = False
 
 # 采集资产的方式，选项有：agent(默认), salt, ssh
 MODE = 'ssh'
@@ -60,7 +60,8 @@ CLIENT_DATABASE_CONF = {
     'sql_list': {'variables': 'show global variables;',
                  'status': 'show global status;',
                  'processlist': 'select user,host,db,time,info from information_schema.processlist where info is not null;',
-                 'engine': 'show engine innodb status;', },
+                 'engine': 'show engine innodb status;',
+                 'big_table': ''},
 
 }
 

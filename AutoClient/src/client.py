@@ -16,6 +16,7 @@ from concurrent.futures import ThreadPoolExecutor
 class AutoBase(object):
     def __init__(self):
         self.asset_api = settings.ASSET_API
+        # self.database_api = settings.DATABASE_API
         self.key = settings.KEY
         self.key_name = settings.AUTH_KEY_NAME
 
@@ -64,10 +65,33 @@ class AutoBase(object):
                 json=msg
             )
         except Exception as e:
+            print(e)
             response = e
             status = False
         if callback:
             callback(status, response)
+
+    # def post_database(self, msg, callback=None):
+    #     """
+    #     post方式向接口提交资产信息
+    #     :param msg:
+    #     :param callback:
+    #     :return:
+    #     """
+    #     status = True
+    #     try:
+    #         headers = {}
+    #         headers.update(self.auth_key())
+    #         response = requests.post(
+    #             url=self.database_api,
+    #             headers=headers,
+    #             json=msg
+    #         )
+    #     except Exception as e:
+    #         response = e
+    #         status = False
+    #     if callback:
+    #         callback(status, response)
 
     def process(self):
         """
@@ -148,6 +172,7 @@ class AutoAgent(AutoBase):
             self.write_local_cert(server_info.data['hostname'])
         server_json = Json.dumps(server_info.data)
         self.post_asset(server_json, self.callback)
+        # self.post_database(server_json, self.callback)
 
 
 class AutoSSH(AutoBase):
@@ -170,6 +195,7 @@ class AutoSSH(AutoBase):
         server_info = plugins.get_server_info(hostname)
         server_json = Json.dumps(server_info.data)
         self.post_asset(server_json, self.callback)
+        # self.post_database(server_json, self.callback)
 
 
 class AutoSalt(AutoBase):
@@ -207,4 +233,4 @@ class AutoSalt(AutoBase):
         server_json = Json.dumps(server_info.data)
         # 发送到API
         self.post_asset(server_json, self.callback)
-
+        # self.post_database(server_json, self.callback)

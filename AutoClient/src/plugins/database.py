@@ -9,7 +9,6 @@ from .base import BasePlugin
 from lib.response import BaseResponse
 from config import settings
 import pymysql
-import re
 
 
 class GetServerDBInfo(object):
@@ -41,7 +40,7 @@ class GetServerDBInfo(object):
 
 
 class DatabasePlugin(BasePlugin):
-    def mysql(self):
+    def linux(self):
         response = BaseResponse()
         try:
             if self.test_mode:
@@ -64,8 +63,7 @@ class DatabasePlugin(BasePlugin):
                                                      port=item['port'],
                                                      passwd=settings.CLIENT_DATABASE_CONF['password'])
                         cli_db_info = client_obj.getinfo(settings.CLIENT_DATABASE_CONF['sql_list'][subject])
-                        response[subject] = cli_db_info
-
+                        response.data[subject] = cli_db_info
         except Exception as e:
             msg = "%s Mysql info collect fail %s"
             self.logger.log(msg % (self.hostname, traceback.format_exc()), False)
@@ -73,15 +71,7 @@ class DatabasePlugin(BasePlugin):
             response.error = msg % (self.hostname, traceback.format_exc())
         return response
 
-    @staticmethod
-    def mega_patter_match(needle):
-        grep_pattern = {'Slot': 'slot', 'Raw Size': 'capacity', 'Inquiry': 'model', 'PD Type': 'pd_type'}
-        for key, value in grep_pattern.items():
-            if needle.startswith(key):
-                return value
-        return False
-
 
 if __name__ == '__main__':
     obj1 = DatabasePlugin
-    obj1.mysql()
+    obj1.linux()
