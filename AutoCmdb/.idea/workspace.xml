@@ -2,16 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0972200a-68f6-4ece-be41-d029e08e5d55" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/../AutoClient/files/database.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../AutoClient/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../AutoClient/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AutoClient/config/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/../AutoClient/config/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AutoClient/files/status.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AutoClient/log/error.log" beforeDir="false" afterPath="$PROJECT_DIR$/../AutoClient/log/error.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoClient/config/cert" beforeDir="false" afterPath="$PROJECT_DIR$/../AutoClient/config/cert" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoClient/src/client.py" beforeDir="false" afterPath="$PROJECT_DIR$/../AutoClient/src/client.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoClient/src/plugins/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/../AutoClient/src/plugins/base.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AutoClient/src/plugins/basic.py" beforeDir="false" afterPath="$PROJECT_DIR$/../AutoClient/src/plugins/basic.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../AutoClient/src/plugins/cpu.py" beforeDir="false" afterPath="$PROJECT_DIR$/../AutoClient/src/plugins/cpu.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AutoClient/src/plugins/database.py" beforeDir="false" afterPath="$PROJECT_DIR$/../AutoClient/src/plugins/database.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AutoClient/test_db.py" beforeDir="false" afterPath="$PROJECT_DIR$/../AutoClient/test_db.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/views.py" afterDir="false" />
     </list>
     <ignored path="AutoCmdb.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -60,17 +56,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/api/service/asset.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="36">
-              <caret line="5" column="22" lean-forward="true" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
+            <state relative-caret-position="524">
+              <caret line="38" column="19" lean-forward="true" selection-start-line="38" selection-start-column="19" selection-end-line="38" selection-end-column="19" />
+              <folding>
+                <element signature="e#45#61#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/utils/auth.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="303">
-              <caret line="52" lean-forward="true" selection-start-line="52" selection-end-line="52" />
+            <state relative-caret-position="195">
+              <caret line="40" column="31" lean-forward="true" selection-start-line="40" selection-start-column="31" selection-end-line="40" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -96,11 +95,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/api/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="56" column="19" selection-start-line="56" selection-start-column="19" selection-end-line="56" selection-end-column="19" />
+            <state relative-caret-position="-457">
+              <caret line="60" column="32" selection-start-line="60" selection-start-column="32" selection-end-line="60" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -356,15 +355,16 @@
       <updated>1487667400488</updated>
       <workItem from="1563936798950" duration="25219000" />
       <workItem from="1563982929143" duration="718000" />
-      <workItem from="1564017016911" duration="22453000" />
+      <workItem from="1564017016911" duration="25324000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="48390000" />
+    <option name="totallyTimeSpent" value="51261000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16595136" />
       <window_info id="Database" order="1" weight="0.19098713" />
@@ -723,24 +723,10 @@
     <entry file="file://$PROJECT_DIR$/utils/agorithm.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/service/asset.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="5" column="22" lean-forward="true" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/utils/response.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="21" lean-forward="true" selection-start-column="21" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/utils/auth.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="303">
-          <caret line="52" lean-forward="true" selection-start-line="52" selection-end-line="52" />
         </state>
       </provider>
     </entry>
@@ -763,8 +749,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/api/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="56" column="19" selection-start-line="56" selection-start-column="19" selection-end-line="56" selection-end-column="19" />
+        <state relative-caret-position="-457">
+          <caret line="60" column="32" selection-start-line="60" selection-start-column="32" selection-end-line="60" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/service/asset.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="524">
+          <caret line="38" column="19" lean-forward="true" selection-start-line="38" selection-start-column="19" selection-end-line="38" selection-end-column="19" />
+          <folding>
+            <element signature="e#45#61#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utils/auth.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="40" column="31" lean-forward="true" selection-start-line="40" selection-start-column="31" selection-end-line="40" selection-end-column="31" />
         </state>
       </provider>
     </entry>

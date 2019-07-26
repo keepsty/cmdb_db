@@ -54,6 +54,5 @@ class BasicPlugin(BasePlugin):
             self.logger.log(msg % (self.hostname, traceback.format_exc()), False)
             response.status = False
             response.error = msg % (self.hostname, traceback.format_exc())
-
         return response
 

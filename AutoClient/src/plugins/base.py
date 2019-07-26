@@ -17,14 +17,12 @@ class BasePlugin(object):
 
     def salt(self, cmd, ):
         import salt.client
-
         local = salt.client.LocalClient()
         result = local.cmd(self.hostname, 'cmd.run', [cmd])
         return result[self.hostname]
 
     def ssh(self, cmd):
         import paramiko
-
         private_key = paramiko.RSAKey.from_private_key_file(settings.SSH_PRIVATE_KEY)
         ssh = paramiko.SSHClient()
         ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())

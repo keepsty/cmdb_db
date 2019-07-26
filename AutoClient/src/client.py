@@ -192,6 +192,7 @@ class AutoSSH(AutoBase):
         pool.shutdown(wait=True)
 
     def run(self, hostname):
+        # ssh salt 方式会链接hostname来进行执行命令
         server_info = plugins.get_server_info(hostname)
         server_json = Json.dumps(server_info.data)
         self.post_asset(server_json, self.callback)

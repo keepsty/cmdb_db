@@ -12,7 +12,6 @@ class CpuPlugin(BasePlugin):
         try:
             if self.test_mode:
                 from config.settings import BASEDIR
-
                 output = open(os.path.join(BASEDIR, 'files/cpuinfo.out'), 'r').read()
             else:
                 shell_command = "cat /proc/cpuinfo"
