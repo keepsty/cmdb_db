@@ -21,3 +21,96 @@
 2017-02-23 10:01:32,992  - ERROR :  资产更新异常
 2017-02-23 10:02:45,313  - ERROR :  资产更新异常
 2017-04-14 12:20:20,821  - ERROR :  失败
+2019-07-26 09:54:37,782  - ERROR :   Mysql info collect fail Traceback (most recent call last):
+  File "/Users/yky/PycharmProjects/cmdb/AutoClient/src/plugins/database.py", line 49, in linux
+    output = open(os.path.join(BASEDIR, 'files/database.out'), 'r').read()
+FileNotFoundError: [Errno 2] No such file or directory: '/Users/yky/PycharmProjects/cmdb/AutoClient/files/database.out'
+
+2019-07-26 09:55:39,119  - ERROR :   Mysql info collect fail Traceback (most recent call last):
+  File "/Users/yky/PycharmProjects/cmdb/AutoClient/src/plugins/database.py", line 50, in linux
+    output = open(os.path.join(BASEDIR, 'files/database.out'), 'r').read()
+FileNotFoundError: [Errno 2] No such file or directory: '/Users/yky/PycharmProjects/cmdb/AutoClient/files/database.out'
+
+2019-07-26 09:56:52,469  - ERROR :   Mysql info collect fail Traceback (most recent call last):
+  File "/Users/yky/PycharmProjects/cmdb/AutoClient/src/plugins/database.py", line 59, in linux
+    ser_db_list = database_obj.getinfo(settings.SERVER_DATABASE_CONF['sql'], )
+  File "/Users/yky/PycharmProjects/cmdb/AutoClient/src/plugins/database.py", line 29, in getinfo
+    charset='utf8')
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/pymysql/__init__.py", line 94, in Connect
+    return Connection(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/pymysql/connections.py", line 325, in __init__
+    self.connect()
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/pymysql/connections.py", line 589, in connect
+    self.host_info = "socket %s:%d" % (self.host, self.port)
+TypeError: %d format: a number is required, not str
+
+2019-07-26 09:57:21,518  - ERROR :   Mysql info collect fail Traceback (most recent call last):
+  File "/Users/yky/PycharmProjects/cmdb/AutoClient/src/plugins/database.py", line 58, in linux
+    ser_db_list = database_obj.getinfo(settings.SERVER_DATABASE_CONF['sql'], )
+  File "/Users/yky/PycharmProjects/cmdb/AutoClient/src/plugins/database.py", line 29, in getinfo
+    charset='utf8')
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/pymysql/__init__.py", line 94, in Connect
+    return Connection(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/pymysql/connections.py", line 325, in __init__
+    self.connect()
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/pymysql/connections.py", line 589, in connect
+    self.host_info = "socket %s:%d" % (self.host, self.port)
+TypeError: %d format: a number is required, not str
+
+2019-07-26 09:57:37,766  - ERROR :   Mysql info collect fail Traceback (most recent call last):
+  File "/Users/yky/PycharmProjects/cmdb/AutoClient/src/plugins/database.py", line 59, in linux
+    ser_db_list = database_obj.getinfo(settings.SERVER_DATABASE_CONF['sql'], )
+  File "/Users/yky/PycharmProjects/cmdb/AutoClient/src/plugins/database.py", line 29, in getinfo
+    charset='utf8')
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/pymysql/__init__.py", line 94, in Connect
+    return Connection(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/pymysql/connections.py", line 325, in __init__
+    self.connect()
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/pymysql/connections.py", line 589, in connect
+    self.host_info = "socket %s:%d" % (self.host, self.port)
+TypeError: %d format: a number is required, not str
+
+2019-07-26 09:58:00,849  - ERROR :   Mysql info collect fail Traceback (most recent call last):
+  File "/Users/yky/PycharmProjects/cmdb/AutoClient/src/plugins/database.py", line 58, in linux
+    ser_db_list = database_obj.getinfo(settings.SERVER_DATABASE_CONF['sql'], )
+  File "/Users/yky/PycharmProjects/cmdb/AutoClient/src/plugins/database.py", line 29, in getinfo
+    charset='utf8')
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/pymysql/__init__.py", line 94, in Connect
+    return Connection(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/pymysql/connections.py", line 325, in __init__
+    self.connect()
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/pymysql/connections.py", line 589, in connect
+    self.host_info = "socket %s:%d" % (self.host, self.port)
+TypeError: %d format: a number is required, not str
+
+2019-07-26 09:58:28,393  - ERROR :   Mysql info collect fail Traceback (most recent call last):
+  File "/Users/yky/PycharmProjects/cmdb/AutoClient/src/plugins/database.py", line 59, in linux
+    ser_db_list = database_obj.getinfo(settings.SERVER_DATABASE_CONF['sql'], )
+  File "/Users/yky/PycharmProjects/cmdb/AutoClient/src/plugins/database.py", line 29, in getinfo
+    charset='utf8')
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/pymysql/__init__.py", line 94, in Connect
+    return Connection(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/pymysql/connections.py", line 325, in __init__
+    self.connect()
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/pymysql/connections.py", line 589, in connect
+    self.host_info = "socket %s:%d" % (self.host, self.port)
+TypeError: %d format: a number is required, not str
+
+2019-07-26 09:58:35,528  - ERROR :   Mysql info collect fail Traceback (most recent call last):
+  File "/Users/yky/PycharmProjects/cmdb/AutoClient/src/plugins/database.py", line 59, in linux
+    ser_db_list = database_obj.getinfo(settings.SERVER_DATABASE_CONF['sql'], )
+  File "/Users/yky/PycharmProjects/cmdb/AutoClient/src/plugins/database.py", line 29, in getinfo
+    charset='utf8')
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/pymysql/__init__.py", line 94, in Connect
+    return Connection(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/pymysql/connections.py", line 325, in __init__
+    self.connect()
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/pymysql/connections.py", line 589, in connect
+    self.host_info = "socket %s:%d" % (self.host, self.port)
+TypeError: %d format: a number is required, not str
+
+2019-07-26 10:02:10,610  - ERROR :   Mysql info collect fail Traceback (most recent call last):
+  File "/Users/yky/PycharmProjects/cmdb/AutoClient/src/plugins/database.py", line 55, in linux
+    passwd=settings.SERVER_DATABASE_CONF['password'])
+TypeError: __init__() missing 1 required positional argument: 'db'
+

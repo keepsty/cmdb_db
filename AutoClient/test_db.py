@@ -11,7 +11,7 @@
 # for i in range(50):
 #     pool.submit(task,i)
 
-
+from lib.response import BaseResponse
 import pymysql
 import re
 from config import settings
@@ -21,6 +21,7 @@ class GetServerDBInfo(object):
     '''
     获取server的cmdb数据库 table中数据库list
     '''
+    response = BaseResponse()
 
     def __init__(self, user, host, port, passwd):
         self.user = user
@@ -43,72 +44,42 @@ class GetServerDBInfo(object):
         if dbinfo:
             return dbinfo
 
-    # class DatabasePlugin(object):
-    #     response = {}
-    #
-    #     def linux(self):
-    #
-    #         try:
-    #
-    #             database_obj = GetServerDBInfo(user=settings.SERVER_DATABASE_CONF['user'],
-    #                                            host=settings.SERVER_DATABASE_CONF['host'],
-    #                                            port=settings.SERVER_DATABASE_CONF['port'],
-    #                                            passwd=settings.SERVER_DATABASE_CONF['password'],
-    #                                            db=settings.SERVER_DATABASE_CONF['db'])
-    #
-    #             ser_db_list = database_obj.getinfo(settings.SERVER_DATABASE_CONF['sql'], )
-    #
-    #             for item in ser_db_list:
-    #                 print(item)
-    #
-    #             # shell_command = "/usr/local/mysql/bin/mysql -u'{}' -p'{}' -h'{}' -P{} -e '{}'".format(
-    #             #     settings.DATABASE_CONF['user'], settings.DATABASE_CONF['password'], settings.DATABASE_CONF['host'],
-    #             #     settings.DATABASE_CONF['port'], '')
-    #
-    #             # output = self.exec_shell_cmd(shell_command)
-    #
-    #         # response.data = self.parse(item)
-    #         except Exception as e:
-    #             print(e)
-    #
-    #         return ser_db_list
+
+class DatabasePlugin(object):
+    def linux(self):
+        response = BaseResponse()
+        tmplist = {'database': {}}
+        try:
+            database_obj = GetServerDBInfo(user=settings.SERVER_DATABASE_CONF['user'],
+                                           host=settings.SERVER_DATABASE_CONF['host'],
+                                           port=int(settings.SERVER_DATABASE_CONF['port']),
+                                           passwd=settings.SERVER_DATABASE_CONF['password'])
+
+            ser_db_list = database_obj.getinfo(settings.SERVER_DATABASE_CONF['sql'], )
+            # print(ser_db_list)
+
+            for item in ser_db_list:
+                l1 = []
+                d1 = {}
+                for subject in settings.CLIENT_DATABASE_CONF['sql_list']:
+                    client_obj = GetServerDBInfo(user=settings.CLIENT_DATABASE_CONF['user'],
+                                                 host=item['ip'],
+                                                 port=item['port'],
+                                                 passwd=settings.CLIENT_DATABASE_CONF['password'])
+                    single = '{}_{}'.format(item['ip'], item['port'])
+                    cli_db_info = client_obj.getinfo(settings.CLIENT_DATABASE_CONF['sql_list'][subject])
+
+                    l1.append(cli_db_info)
+                    # l1.append(cli_db_info[1])
+                    d1[single] = l1
+
+                tmplist["database"] = d1
+            response.data = tmplist
+        except Exception as e:
+            print(e)
+
+        return response
 
 
-def linux():
-    response = {'dblist': []}
-    try:
-
-        database_obj = GetServerDBInfo(user=settings.SERVER_DATABASE_CONF['user'],
-                                       host=settings.SERVER_DATABASE_CONF['host'],
-                                       port=int(settings.SERVER_DATABASE_CONF['port']),
-                                       passwd=settings.SERVER_DATABASE_CONF['password'])
-
-        ser_db_list = database_obj.getinfo(settings.SERVER_DATABASE_CONF['sql'], )
-        # print(ser_db_list)
-
-        for item in ser_db_list:
-            for subject in settings.CLIENT_DATABASE_CONF['sql_list']:
-                client_obj = GetServerDBInfo(user=settings.CLIENT_DATABASE_CONF['user'],
-                                             host=item['ip'],
-                                             port=item['port'],
-                                             passwd=settings.CLIENT_DATABASE_CONF['password'])
-                cli_db_info = client_obj.getinfo(settings.CLIENT_DATABASE_CONF['sql_list'][subject])
-                response[subject] = cli_db_info
-
-    # shell_command = "/usr/local/mysql/bin/mysql -u'{}' -p'{}' -h'{}' -P{} -e '{}'".format(
-    #     settings.DATABASE_CONF['user'], settings.DATABASE_CONF['password'], settings.DATABASE_CONF['host'],
-    #     settings.DATABASE_CONF['port'], '')
-
-    # output = self.exec_shell_cmd(shell_command)
-
-    # response.data = self.parse(item)
-    except Exception as e:
-        print(e)
-
-    return response
-
-
-obj_1 = linux()
-for subject in settings.CLIENT_DATABASE_CONF['sql_list']:
-    for i in obj_1[subject]:
-        print(i)
+obj_1 = DatabasePlugin().linux()
+print(obj_1.data)

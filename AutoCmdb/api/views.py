@@ -54,6 +54,7 @@ class AssetView(View):
         :param kwargs:
         :return: 1000 成功;1001 接口授权失败;1002 数据库中资产不存在
         """
+        print('post')
         server_info = json.loads(request.body.decode('utf-8'))
         server_info = json.loads(server_info)
         print(server_info)

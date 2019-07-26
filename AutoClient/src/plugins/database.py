@@ -5,8 +5,9 @@
 
 import os
 import traceback
-from .base import BasePlugin
+from src.plugins.base import BasePlugin
 from lib.response import BaseResponse
+from files import database
 from config import settings
 import pymysql
 
@@ -16,45 +17,43 @@ class GetServerDBInfo(object):
     获取server的cmdb数据库 table中数据库list
     '''
 
-    def __init__(self, user, host, port, passwd, db):
+    def __init__(self, user, host, port, passwd):
         self.user = user
         self.host = host
         self.port = port
         self.passwd = passwd
-        self.db = db
-        self.dbinfo = None
 
     def getinfo(self, sql, *args):
-        conn = pymysql.connect(host=self.host, user=self.user, port=self.port, password=self.passwd, database=self.db,
+        dbinfo = None
+        conn = pymysql.connect(host=self.host, user=self.user, port=self.port, password=self.passwd,
                                charset='utf8')
         cur = conn.cursor(cursor=pymysql.cursors.DictCursor)
         cur.execute(sql, args)
         if sql.find('select') >= 0 or sql.find('show') >= 0:
-            self.dbinfo = cur.fetchall()
+            dbinfo = cur.fetchall()
         else:
             conn.commit()
         cur.close()
         conn.close()
-        if self.dbinfo:
-            return self.dbinfo
+        if dbinfo:
+            return dbinfo
 
 
 class DatabasePlugin(BasePlugin):
     def linux(self):
         response = BaseResponse()
+        tmplist = {"database": []}
         try:
             if self.test_mode:
-                from config.settings import BASEDIR
-
-                output = open(os.path.join(BASEDIR, 'files/database.out'), 'r').read()
+                response.data = database.datainfo
             else:
                 database_obj = GetServerDBInfo(user=settings.SERVER_DATABASE_CONF['user'],
                                                host=settings.SERVER_DATABASE_CONF['host'],
-                                               port=settings.SERVER_DATABASE_CONF['port'],
-                                               passwd=settings.SERVER_DATABASE_CONF['password'],
-                                               db=settings.SERVER_DATABASE_CONF['db'])
+                                               port=int(settings.SERVER_DATABASE_CONF['port']),
+                                               passwd=settings.SERVER_DATABASE_CONF['password'])
 
                 ser_db_list = database_obj.getinfo(settings.SERVER_DATABASE_CONF['sql'], )
+                # print(ser_db_list)
 
                 for item in ser_db_list:
                     for subject in settings.CLIENT_DATABASE_CONF['sql_list']:
@@ -63,7 +62,8 @@ class DatabasePlugin(BasePlugin):
                                                      port=item['port'],
                                                      passwd=settings.CLIENT_DATABASE_CONF['password'])
                         cli_db_info = client_obj.getinfo(settings.CLIENT_DATABASE_CONF['sql_list'][subject])
-                        response.data[subject] = cli_db_info
+                        tmplist["database"].append(cli_db_info)
+                response.data = tmplist
         except Exception as e:
             msg = "%s Mysql info collect fail %s"
             self.logger.log(msg % (self.hostname, traceback.format_exc()), False)
@@ -73,5 +73,5 @@ class DatabasePlugin(BasePlugin):
 
 
 if __name__ == '__main__':
-    obj1 = DatabasePlugin
+    obj1 = DatabasePlugin()
     obj1.linux()

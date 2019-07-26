@@ -49,6 +49,7 @@ class CpuPlugin(BasePlugin):
                     if not response['cpu_model']:
                         response['cpu_model'] = value
         response['cpu_physical_count'] = len(cpu_physical_set)
+        print(response)
 
         return response
 
